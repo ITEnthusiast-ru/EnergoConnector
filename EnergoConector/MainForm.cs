@@ -82,13 +82,13 @@ namespace EnergoConector
                 BLE_String pairMacPass = bleRowList.Find((Predicate<BLE_String>)(x => x.pass == findiMac));
                 if (pairMacPass == null)
                 {
-                    InfoLabel.Text = "";
+                    InfoLabel.Text =string.Empty;
                     InfoLabel.Text += "Нет такого мака в списке\r\n";
                 }
                 else
                 {
 
-                    InfoLabel.Text = "";
+                    InfoLabel.Text = string.Empty;
                     InfoLabel.Text = $"Найдена связка: {pairMacPass.pass} : {pairMacPass.pass}  \r\n";
                 }
                 return pairMacPass;
