@@ -16,23 +16,23 @@ namespace EnergoConector
         string btDeviceAddress = "XX:XX:XX:XX:XX:XX";  // Укажите MAC-адрес вашего Bluetooth-устройства
         string btPortName = "COMx";  // Укажите порт Bluetooth, который используется (например, COM3)
 
-        public void SerachBLE() {
-            BluetoothDeviceInfo device = null;
-            foreach (BluetoothDeviceInfo dev in BluetoothDeviceInfo.)
-            {
-                if (dev.DeviceAddress.ToString() == btDeviceAddress)
-                {
-                    device = dev;
-                    break;
-                }
-                if (device == null)
-                {
-                    Console.WriteLine("Устройство не найдено.");
-                    return;
-                }
+        //public void SerachBLE() {
+        //    BluetoothDeviceInfo device = null;
+        //    foreach (BluetoothDeviceInfo dev in )
+        //    {
+        //        if (dev.DeviceAddress.ToString() == btDeviceAddress)
+        //        {
+        //            device = dev;
+        //            break;
+        //        }
+        //        if (device == null)
+        //        {
+        //            Console.WriteLine("Устройство не найдено.");
+        //            return;
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
     }
           

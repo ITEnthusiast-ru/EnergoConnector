@@ -4,12 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Windows.Forms;
 
 
 namespace EnergoConector
 {
-    static class FileHandler
-    {   public static string  filePath {  get; set; }
-        
+     class FileHandler:Form
+    {
+      
+
     }
 }
