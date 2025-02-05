@@ -9,9 +9,23 @@ using System.Windows.Forms;
 
 namespace EnergoConector
 {
-     class FileHandler:Form
+     static class FileHandler
     {
-      
 
-    }
+		private static string defaultFilePath="list_ble.csv";
+
+		public static string DefaultFilePath
+        {
+			get { return defaultFilePath; }
+			set {
+				
+				defaultFilePath = value; }
+		}
+
+
+
+
+
+
+	}
 }
