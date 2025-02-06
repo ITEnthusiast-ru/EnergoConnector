@@ -14,11 +14,11 @@ namespace EnergoConector
 
     public partial class Main : Form
     {
-        private string _filePath = FileHandler.DefaultFilePath; // Путь к CSV-файлу
+        private string _filePath = FileHandler.DefaultFilePath; // Путь к CSV-файл
         public Main()
         {
             InitializeComponent();
-            ComPortChoice.KeyPress += (sender, e) => e.Handled = false;
+            ComPortChoice.KeyPress += (sender, e) => e.Handled = true;
             listBoxResults.Visible = false; // Скрываем ListBox по умолчанию
         }
 
@@ -82,27 +82,7 @@ namespace EnergoConector
             }
         }
 
-        private void TextBoxSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                // Если нажат Enter и есть выбранный элемент в ListBox
-                if (listBoxResults.SelectedIndex != -1)
-                {
-                    inputMacField.Text = listBoxResults.SelectedItem.ToString();
-                    listBoxResults.Visible = false; // Скрываем ListBox после выбора
-                }
-            }
-            else if (e.KeyCode == Keys.Down)
-            {
-                // Перемещаем фокус на ListBox и выбираем первый элемент
-                if (listBoxResults.Items.Count > 0)
-                {
-                    listBoxResults.Focus();
-                    listBoxResults.SelectedIndex = 0;
-                }
-            }
-        }
+        
 
         private void ListBoxResults_KeyDown(object sender, KeyEventArgs e)
         {
@@ -133,9 +113,11 @@ namespace EnergoConector
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        if (line.StartsWith(digits))
+                        string[] parts = line.Split(';');
+                        if (parts.Length > 0 && parts[0].StartsWith(digits))
                         {
-                            matches.Add(line);
+                            string firstNineDigits = parts[0].Length >= 9 ? parts[0].Substring(0, 9) : parts[0];
+                            matches.Add(firstNineDigits);
                         }
                     }
                 }
@@ -148,6 +130,50 @@ namespace EnergoConector
             return matches;
         }
 
+        private void TextBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (listBoxResults.SelectedIndex != -1)
+                {
+                    string selectedItem = listBoxResults.SelectedItem.ToString();
+                    string fullLine = FindFullLine(selectedItem);
+                    inputMacField.Text = fullLine;
+                    listBoxResults.Visible = false;
+                }
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                if (listBoxResults.Items.Count > 0)
+                {
+                    listBoxResults.Focus();
+                    listBoxResults.SelectedIndex = 0;
+                }
+            }
+        }
+
+        private string FindFullLine(string searchTerm)
+        {
+            try
+            {
+                using (StreamReader reader = new StreamReader(_filePath))
+                {
+                    string line;
+                    while ((line = reader.ReadLine()) != null)
+                    {
+                        if (line.StartsWith(searchTerm))
+                        {
+                            return line;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка при чтении файла: {ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return string.Empty;
+        }
         private void MainForm_Click(object sender, EventArgs e)
         {
             listBoxResults.Visible = false;
@@ -228,13 +254,13 @@ namespace EnergoConector
                 BLE_String pairMacPass = bleRowList.Find((Predicate<BLE_String>)(x => x.Mac == finding_mac));
                 if (pairMacPass == null)
                 {
-                    InfoLabel.Text = "";
+                    InfoLabel.Text = string.Empty;
                     InfoLabel.Text += "Нет такого мака в списке\r\n";
                 }
                 else
                 {
 
-                    InfoLabel.Text = "";
+                    InfoLabel.Text = string.Empty;
                     InfoLabel.Text = $"Найдена связка: {pairMacPass.Mac} : {pairMacPass.Pass}  \r\n";
                 }
                 return pairMacPass;

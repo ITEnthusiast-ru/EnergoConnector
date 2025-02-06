@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("EnergoConector")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Утилита для программирования индикаторного устройсва CE 901")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ITEnthusiast-ru")]
 [assembly: AssemblyProduct("EnergoConector")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]

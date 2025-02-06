@@ -56,7 +56,8 @@
             this.ComPortChoice.Margin = new System.Windows.Forms.Padding(2);
             this.ComPortChoice.Name = "ComPortChoice";
             this.ComPortChoice.Size = new System.Drawing.Size(92, 21);
-            this.ComPortChoice.TabIndex = 0;
+            this.ComPortChoice.TabIndex = 8;
+            this.ComPortChoice.DropDown += new System.EventHandler(this.ComPortChose_DropDown);
             // 
             // richTextBox1
             // 
@@ -75,7 +76,7 @@
             this.InfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.InfoLabel.Name = "InfoLabel";
             this.InfoLabel.Size = new System.Drawing.Size(0, 13);
-            this.InfoLabel.TabIndex = 2;
+            this.InfoLabel.TabIndex = 4;
             // 
             // inputMacField
             // 
@@ -83,8 +84,10 @@
             this.inputMacField.Margin = new System.Windows.Forms.Padding(2);
             this.inputMacField.Name = "inputMacField";
             this.inputMacField.Size = new System.Drawing.Size(101, 20);
-            this.inputMacField.TabIndex = 3;
+            this.inputMacField.TabIndex = 0;
             this.inputMacField.TextChanged += new System.EventHandler(this.TextBoxSearch_TextChanged);
+            this.inputMacField.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBoxSearch_KeyDown);
+            this.inputMacField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputMacField_KeyPress);
             // 
             // inputPassField
             // 
@@ -92,7 +95,8 @@
             this.inputPassField.Margin = new System.Windows.Forms.Padding(2);
             this.inputPassField.Name = "inputPassField";
             this.inputPassField.Size = new System.Drawing.Size(76, 20);
-            this.inputPassField.TabIndex = 4;
+            this.inputPassField.TabIndex = 2;
+            this.inputPassField.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.InputPassField_KeyPress);
             // 
             // FindBtn
             // 
@@ -103,6 +107,7 @@
             this.FindBtn.TabIndex = 5;
             this.FindBtn.Text = "Найти";
             this.FindBtn.UseVisualStyleBackColor = true;
+            this.FindBtn.Click += new System.EventHandler(this.FindBtn_Click);
             // 
             // SendBtn
             // 
@@ -110,9 +115,11 @@
             this.SendBtn.Margin = new System.Windows.Forms.Padding(2);
             this.SendBtn.Name = "SendBtn";
             this.SendBtn.Size = new System.Drawing.Size(75, 19);
-            this.SendBtn.TabIndex = 6;
+            this.SendBtn.TabIndex = 3;
             this.SendBtn.Text = "Изменить";
             this.SendBtn.UseVisualStyleBackColor = true;
+            this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
+            this.SendBtn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SendBtn_KeyUp);
             // 
             // label1
             // 
@@ -151,6 +158,7 @@
             this.listBoxResults.Name = "listBoxResults";
             this.listBoxResults.Size = new System.Drawing.Size(101, 95);
             this.listBoxResults.TabIndex = 10;
+            this.listBoxResults.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListBoxResults_KeyDown);
             // 
             // menuStrip1
             // 
