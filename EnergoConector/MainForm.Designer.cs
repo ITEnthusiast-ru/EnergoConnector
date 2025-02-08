@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.ComPortChoice = new System.Windows.Forms.ComboBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -46,6 +47,7 @@
             this.buttonBrowse = new System.Windows.Forms.ToolStripMenuItem();
             this.labelFilePath = new System.Windows.Forms.Label();
             this.filePathPointer = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +59,7 @@
             this.ComPortChoice.Name = "ComPortChoice";
             this.ComPortChoice.Size = new System.Drawing.Size(92, 21);
             this.ComPortChoice.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.ComPortChoice, "Выбрать COM-порт");
             this.ComPortChoice.DropDown += new System.EventHandler(this.ComPortChose_DropDown);
             // 
             // richTextBox1
@@ -106,6 +109,7 @@
             this.FindBtn.Size = new System.Drawing.Size(75, 19);
             this.FindBtn.TabIndex = 5;
             this.FindBtn.Text = "Найти";
+            this.toolTip1.SetToolTip(this.FindBtn, "Найти  пароль");
             this.FindBtn.UseVisualStyleBackColor = true;
             this.FindBtn.Click += new System.EventHandler(this.FindBtn_Click);
             // 
@@ -117,6 +121,7 @@
             this.SendBtn.Size = new System.Drawing.Size(75, 19);
             this.SendBtn.TabIndex = 3;
             this.SendBtn.Text = "Изменить";
+            this.toolTip1.SetToolTip(this.SendBtn, "Изменить MAC-адрес и пароль");
             this.SendBtn.UseVisualStyleBackColor = true;
             this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
             this.SendBtn.KeyUp += new System.Windows.Forms.KeyEventHandler(this.SendBtn_KeyUp);
@@ -158,6 +163,7 @@
             this.listBoxResults.Name = "listBoxResults";
             this.listBoxResults.Size = new System.Drawing.Size(101, 95);
             this.listBoxResults.TabIndex = 10;
+            this.listBoxResults.Click += new System.EventHandler(this.listBoxResults_Click);
             this.listBoxResults.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ListBoxResults_KeyDown);
             // 
             // menuStrip1
@@ -262,6 +268,7 @@
         private System.Windows.Forms.ToolStripMenuItem buttonBrowse;
         private System.Windows.Forms.Label labelFilePath;
         private System.Windows.Forms.Label filePathPointer;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

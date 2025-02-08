@@ -240,7 +240,7 @@ namespace EnergoConector
             try
             {
                 List<BLE_String> bleRowList = new List<BLE_String>();
-                using (StreamReader streamReader = new StreamReader("list_ble.csv"))
+                using (StreamReader streamReader = new StreamReader(_filePath))
                 {
                     while (!streamReader.EndOfStream)
                     {
@@ -372,5 +372,16 @@ namespace EnergoConector
 
         }
 
+        private void listBoxResults_Click(object sender, EventArgs e)
+        {
+            if (listBoxResults.SelectedIndex != -1)
+            {
+                inputMacField.Text = listBoxResults.SelectedItem.ToString();
+                listBoxResults.Visible = false; // Скрываем ListBox после выбора
+            }
+
+            else return;
+        }
+    
     }
 }
